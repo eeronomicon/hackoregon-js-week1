@@ -1,19 +1,20 @@
 'use strict';
 
-function phoneShopping(spendingCap, taxRate) {
+function phoneShopping(availableFunds, spendingThreshold) {
+  var taxRate = 9;
   var inventory = [["Phone", 399.99], ["Accessory", 19.99]];
   var runningBalance = 0;
   var itemTotal = 0;
   var output = "";
 
   function calculateItemTotal(purchasePrice, taxRate) {
-    return purchasePrice * (1 + taxRate);
+    return purchasePrice * (1 + (taxRate/100));
   }
 
   for (var i = 0; i < 2; i++) {
-    while (runningBalance < spendingCap) {
+    while (runningBalance < (availableFunds - spendingThreshold)) {
       itemTotal = calculateItemTotal(inventory[i][1], taxRate);
-      if (runningBalance + itemTotal > spendingCap) {
+      if (runningBalance + itemTotal > (availableFunds - spendingThreshold)) {
         break;
       } else {
         runningBalance += itemTotal;
@@ -25,4 +26,4 @@ function phoneShopping(spendingCap, taxRate) {
   return output;
 }
 
-console.log(phoneShopping(3000, 0.0825));
+console.log(phoneShopping(3000, 100));

@@ -1,0 +1,43 @@
+<html>
+  <body>
+    <script>
+      var make = {};
+      var tagNames = ['a', 'h1', 'h2'];
+
+      function tagMaker(tagName) {
+        return function() {
+          var tag = tagName;
+          document.createElement(tag);
+        }
+      }
+
+      function makeAdder(amount) {
+      	return function(number) {
+      		return number + amount;
+      	};
+      }
+      var addFive = makeAdder(5);
+
+      //
+      // for (var i = 0; i < tagNames.length; i++) {
+      //   make[tagNames[i]] = tagMaker(tagNames[i]);
+      //   console.log(make[tagNames[i]]);
+      // }
+
+      // function makeh1() {
+      //   document.createElement("h1");
+      // }
+      // function makea() {
+      //   document.createElement("a");
+      // }
+      //
+      // var h1 = makeh1();
+      // h1.innerHTML = 'Hello World';
+      // document.body.appendChild(h1);
+      // var a = makea();
+      // a.href= 'http://google.com';
+      // a.innerHTML = 'Google';
+      // document.body.appendChild(a);
+    </script>
+  </body>
+</html>
